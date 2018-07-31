@@ -4,8 +4,13 @@ import propTypes from 'prop-types';
 class Alert extends React.Component {
 	render() {
 		return (
-			<div className={`alert alert-${this.props.type}`} role="alert">
-			  {this.props.message ? this.props.message : this.props.children}
+			<div>
+				{
+					this.props.show &&
+					<div className={`alert alert-${this.props.type}`} role="alert">
+					  {this.props.message ? this.props.message : this.props.children}
+					</div>
+				}
 			</div>
 		);
 	}
@@ -13,11 +18,13 @@ class Alert extends React.Component {
 
 Alert.propTypes = {
 	type: propTypes.string.isRequired,
-	message: propTypes.string
+	message: propTypes.string,
+	show: propTypes.bool
 };
 
 Alert.defaultProps = {
-	message: null
+	message: null,
+	show: true
 };
 
 export default Alert;
