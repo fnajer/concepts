@@ -7,7 +7,7 @@ class Alert extends React.Component {
 			<div>
 				{
 					this.props.show &&
-					<div className={`alert alert-${this.props.type}`} role="alert">
+					<div onClick={this.props.toggleAlert} className={`alert alert-${this.props.type}`} role="alert">
 					  {this.props.message ? this.props.message : this.props.children}
 					</div>
 				}
@@ -19,12 +19,14 @@ class Alert extends React.Component {
 Alert.propTypes = {
 	type: propTypes.string.isRequired,
 	message: propTypes.string,
-	show: propTypes.bool
+	show: propTypes.bool,
+	toggleAlert: propTypes.func
 };
 
 Alert.defaultProps = {
 	message: null,
-	show: true
+	show: true,
+	toggleAlert: function() {}
 };
 
 export default Alert;
