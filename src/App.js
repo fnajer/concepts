@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Alert from './ui-components/Alert';
+import Alert, { DismissableComponent, AnimatedComponent } from './ui-components/Alert';
 
 class App extends Component {
   constructor() {
@@ -24,6 +24,8 @@ class App extends Component {
         <Alert type="success" toggleAlert={this.toggleAlert} show={this.state.showAlert}>
           <h4 className="alert-heading">Caption</h4>
         </Alert>
+        <DismissableComponent type="danger" toggleAlert={this.toggleAlert} show={this.state.showAlert} message="Hello guys" />
+        <AnimatedComponent type="primary" toggleAlert={this.toggleAlert} show={this.state.showAlert} message="Animated" />
       </div>
     );
   }

@@ -29,4 +29,39 @@ Alert.defaultProps = {
 	toggleAlert: function() {}
 };
 
+// Design pattern "Higher order component" includes:
+// function
+// takes component
+// return enhanced component
+
+const withAnimation = (Component) => {
+	const AnimatedComponent = (props) => {
+		return (
+			<div className="wow bounceInUp">
+				<Component {...props} />
+			</div>
+		);
+	};
+
+	return AnimatedComponent;
+};
+
+const withDismiss = (Component) => {
+	class DismissableComponent extends React.Component {
+		componentDidMount() {
+			setTimeout(() => { 
+				this.props.toggleAlert();
+			}, 2000);
+		}
+		render() {
+			return <Component {...this.props} />
+		}
+	}
+
+	return DismissableComponent;
+};
+
+export const AnimatedComponent = withAnimation(Alert);
+export const DismissableComponent = withDismiss(AnimatedComponent);
+
 export default Alert;
