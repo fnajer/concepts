@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 class Alert extends React.Component {
 	render() {
@@ -9,5 +10,14 @@ class Alert extends React.Component {
 		);
 	}
 }
+
+Alert.propTypes = {
+	type: propTypes.string.isRequired,
+	message: propTypes.string
+};
+
+Alert.defaultProps = {
+	message: null
+};
 
 export default Alert;
